@@ -472,13 +472,21 @@ aws ec2 modify-instance-metadata-options \
 See `registries.yml` for the ECR configuration. The recommended approach on EC2 is to attach the `AmazonEC2ContainerRegistryReadOnly` IAM policy to the instance profile — no static credentials are needed.
 
 
-## What is K3s and Why is it Used?
+
+
+
+### Name: Reitumetse Modise
+### Student number: 222910038
+
+
+
+#### What is K3s and Why is it Used?
 
 K3s is a lightweight, fully compliant Kubernetes distribution developed by Rancher Labs. It is designed to run efficiently in resource-constrained environments such as edge computing, IoT devices, and small cloud instances. Unlike standard Kubernetes, K3s reduces complexity by removing non-essential components and packaging everything into a single binary, making it easier to install, manage, and operate.
 
 K3s is widely used because it requires less memory and CPU, starts quickly, and simplifies cluster setup while still maintaining core Kubernetes functionality. This makes it ideal for learning environments, development, and production scenarios where lightweight orchestration is needed, such as in distributed and 5G edge networks.
 
-## Key Components of K3s
+#### Key Components of K3s
 1. Control Plane
 
 The control plane is responsible for managing the entire cluster. It includes components such as the API server, scheduler, and controller manager. These components ensure that the desired state of the cluster is maintained, workloads are scheduled correctly, and the system operates reliably.
@@ -503,7 +511,12 @@ Ingress controllers manage external access to services within the cluster, typic
 
 Storage in K3s allows applications to persist data beyond the lifecycle of individual containers. K3s includes a simple local storage provisioner by default, but it can also integrate with external storage systems such as cloud-based volumes. Persistent storage is essential for stateful applications like databases.
 
-### Reflection
+<img width="1366" height="720" alt="Ree" src="https://github.com/user-attachments/assets/f0b2e50a-bdac-4652-bef9-b94fba0ae814" />
+<img width="1366" height="720" alt="reee" src="https://github.com/user-attachments/assets/03d1371e-6142-4058-8efe-9abeceac4261" />
+<img width="1366" height="720" alt="reeeee" src="https://github.com/user-attachments/assets/f1abfd99-6f9d-48c6-8f6c-f41c60f2e847" />
+<img width="1366" height="720" alt="reitu" src="https://github.com/user-attachments/assets/61e634e7-233c-45b3-9c3f-12821086e9fa" />
+
+#### Reflection
 
 This project provided valuable hands-on experience in deploying a lightweight Kubernetes cluster using K3s on AWS. Through the process, I gained a deeper understanding of cluster architecture, node configuration, and the importance of proper networking between nodes. Setting up multiple master nodes helped me understand high availability concepts and how distributed systems maintain reliability. I also learned how to use SSH securely, configure Linux systems, and manage services using command-line tools, which strengthened my practical system administration skills.
 
