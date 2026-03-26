@@ -470,3 +470,45 @@ aws ec2 modify-instance-metadata-options \
 ### Private Registry (Amazon ECR)
 
 See `registries.yml` for the ECR configuration. The recommended approach on EC2 is to attach the `AmazonEC2ContainerRegistryReadOnly` IAM policy to the instance profile — no static credentials are needed.
+
+
+## What is K3s and Why is it Used?
+
+K3s is a lightweight, fully compliant Kubernetes distribution developed by Rancher Labs. It is designed to run efficiently in resource-constrained environments such as edge computing, IoT devices, and small cloud instances. Unlike standard Kubernetes, K3s reduces complexity by removing non-essential components and packaging everything into a single binary, making it easier to install, manage, and operate.
+
+K3s is widely used because it requires less memory and CPU, starts quickly, and simplifies cluster setup while still maintaining core Kubernetes functionality. This makes it ideal for learning environments, development, and production scenarios where lightweight orchestration is needed, such as in distributed and 5G edge networks.
+
+## Key Components of K3s
+1. Control Plane
+
+The control plane is responsible for managing the entire cluster. It includes components such as the API server, scheduler, and controller manager. These components ensure that the desired state of the cluster is maintained, workloads are scheduled correctly, and the system operates reliably.
+
+2. Agents (Worker Nodes)
+
+Agents, also known as worker nodes, are responsible for running application workloads. They communicate with the control plane and execute tasks such as running containers and reporting node status. In a K3s cluster, agents are lightweight and easy to join using a cluster token.
+
+3. Container Runtime
+
+K3s uses a container runtime (by default, containerd) to run containers. The container runtime is responsible for pulling container images, starting and stopping containers, and managing their lifecycle. This is the core layer that actually executes applications within the cluster.
+
+4. CNI (Container Network Interface)
+
+The CNI handles networking between pods and services within the cluster. It ensures that containers can communicate with each other across different nodes. K3s includes a default networking solution (Flannel), which simplifies cluster networking setup.
+
+5. Ingress / Load Balancer
+
+Ingress controllers manage external access to services within the cluster, typically via HTTP or HTTPS. K3s includes Traefik by default, but in this project it was disabled and replaced with an NGINX Ingress Controller. Load balancing ensures traffic is distributed efficiently across multiple pods, improving availability and performance.
+
+6. Storage
+
+Storage in K3s allows applications to persist data beyond the lifecycle of individual containers. K3s includes a simple local storage provisioner by default, but it can also integrate with external storage systems such as cloud-based volumes. Persistent storage is essential for stateful applications like databases.
+
+### Reflection
+
+This project provided valuable hands-on experience in deploying a lightweight Kubernetes cluster using K3s on AWS. Through the process, I gained a deeper understanding of cluster architecture, node configuration, and the importance of proper networking between nodes. Setting up multiple master nodes helped me understand high availability concepts and how distributed systems maintain reliability. I also learned how to use SSH securely, configure Linux systems, and manage services using command-line tools, which strengthened my practical system administration skills.
+
+One of the main challenges I faced was correctly configuring communication between nodes. Initially, there were issues with nodes not resolving each other’s hostnames, which prevented the cluster from forming properly. I resolved this by carefully updating the /etc/hosts file on each node with the correct private IP addresses. Another challenge was handling SSH access using a .pem key in Windows PowerShell, as permission and path issues caused connection failures. This was resolved by ensuring the correct file path and command syntax were used. Additionally, YAML configuration errors, such as incorrect indentation, caused failures during K3s installation. I addressed this by carefully reviewing and correcting the formatting.
+
+K3s is a lightweight distribution of Kubernetes designed for edge, IoT, and resource-constrained environments, but it still retains the core functionality of standard Kubernetes. This makes it highly relevant to production environments, especially in modern cloud-native and 5G architectures. In 5G networks, services are designed using microservices and container-based approaches, which require orchestration platforms like Kubernetes. K3s demonstrates how Kubernetes can be optimized for edge computing, which is a critical component of 5G infrastructure where low latency and distributed processing are essential.
+
+Virtualization and containerization play a key role in enabling scalable services. Virtualization allows multiple virtual machines to run on a single physical server, improving resource utilization and flexibility. Containerization, on the other hand, allows applications to run in isolated environments with all their dependencies, making them portable and consistent across different environments. Kubernetes builds on containerization by automating deployment, scaling, and management of these containers. Together, these technologies enable organizations to deploy highly scalable, resilient, and efficient systems that can adapt to changing workloads and user demands.
